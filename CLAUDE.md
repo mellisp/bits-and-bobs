@@ -22,6 +22,7 @@ This is a multi-purpose repository. Files and directories are organized by topic
 - Use feature branches for new additions
 - Write clear, descriptive commit messages summarizing the "why" not just the "what"
 - Keep commits focused and atomic (one logical change per commit)
+- Never include session URLs (e.g. `https://claude.ai/code/session_...`) in commit messages
 
 ### Adding New Content
 
