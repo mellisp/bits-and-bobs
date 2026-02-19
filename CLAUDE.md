@@ -1,6 +1,6 @@
 # mpOS
 
-Windows 2000/XP-themed personal website for matthewpritchard.com. Purely static (HTML/CSS/JS), no framework, no build step, no dependencies.
+Retro desktop-themed personal website for matthewpritchard.com. Purely static (HTML/CSS/JS), no framework, no build step, no dependencies.
 
 ## Running locally
 
@@ -18,7 +18,7 @@ python3 -m http.server 8000
 | `js/i18n.js` | i18n engine + English strings |
 | `lang/pt.js` | Portuguese strings (registers via `_mpLangRegister`) |
 | `js/audio.js` | Sound playback with cache |
-| `css/theme.css` | XP design system (CSS vars, raised/sunken borders, animations) |
+| `css/theme.css` | Retro design system (CSS vars, raised/sunken borders, animations) |
 | `css/page.css` | Layout styles for index.html |
 | `version.json` | App version (auto-bumped by pre-commit hook) |
 | `brick-breaker.html`, `chicken-fingers.html`, `target-game.html` | Standalone game pages |
@@ -62,7 +62,7 @@ Data files lazy-loaded at runtime: `js/fish-data.js`, `js/aquarium-data.js`, `js
 
 ## Conventions
 
-- Win2000/XP aesthetic in all UI (beveled borders, system colors, Tahoma)
+- Retro desktop aesthetic in all UI (beveled borders, system colors, classic fonts)
 - Games are separate HTML pages, not embedded in index.html
 - CSP meta tag in `index.html` — update when adding external sources
 
