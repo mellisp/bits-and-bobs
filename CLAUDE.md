@@ -70,6 +70,7 @@ Data files lazy-loaded at runtime: `js/fish-data.js`, `js/aquarium-data.js`, `js
 
 - **No Claude attribution** — never include `Co-Authored-By` lines or session URLs
 - Keep commit messages concise and descriptive
+- **Always `git pull` before committing** — multiple Claude windows may be editing concurrently. Pull to get the latest base and avoid merge conflicts, especially in `js/main.js`.
 
 ## Deployment
 
