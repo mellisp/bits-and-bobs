@@ -13,6 +13,17 @@ ruvector.db
 .rvf/
 .ruvector/
 
+# Claude-flow intelligence data (memory.db, HNSW index, embeddings config)
+.claude-flow/
+.swarm/
+
+
+# Local dev pages
+icon-test.html
+icon-test-weather.html
 
 # Claude Code
 CLAUDE.md
+
+# RuVector intelligence data
+.claude/statusline.sh
