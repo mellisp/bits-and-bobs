@@ -15,7 +15,6 @@
 
 /* Sunken border — shared inset border + shadow */
 .calc-display,
-.sw-display,
 .photo-frame,
 .browser-url,
 .folder-address-bar,
@@ -156,8 +155,7 @@
 /* Compact window-body padding */
 #calculator .window-body,
 #calendar .window-body,
-#timezone .window-body,
-#stopwatch .window-body { padding: var(--ui-pad-sm); }
+#timezone .window-body { padding: var(--ui-pad-sm); }
 
 /* My Computer window */
 #mycomputer { width: min(26.25rem, 92vw); left: min(7.5rem, 5vw); top: 2.5rem; }
@@ -490,17 +488,19 @@
 
 /* Stopwatch window */
 #stopwatch { width: min(18.75rem, 92vw); left: min(11.25rem, 5vw); top: 5.625rem; }
-#stopwatch > .window-body { padding: 0; }
+#stopwatch > .window-body { padding: 0; background: #fff; }
 
 .sw-display {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-family: var(--mono);
   text-align: center;
-  padding: 1.25rem 1rem 0.875rem;
-  margin: 0.75rem;
-  background: #fff;
+  padding: 1.5rem 1.5rem 1rem;
   color: #000;
+  transition: color 0.3s ease-out;
 }
+.sw-display.sw-active { color: #2c6a99; }
+.sw-display.sw-active .sw-sep,
+.sw-display.sw-active .sw-cs { color: #74a9c8; }
 .sw-display .sw-sep { color: var(--text-muted); }
 .sw-display .sw-cs {
   font-size: 1.5rem;
@@ -511,7 +511,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.375rem;
-  padding: 0 1rem 0.75rem;
+  padding: 0 1.25rem 1rem;
 }
 
 .sw-btn {
@@ -541,13 +541,7 @@
   overflow-y: auto;
   font-family: var(--mono);
   font-size: var(--ui-font-sm);
-  padding: 0.25rem 0.375rem 0.375rem;
-  margin: 0 0.75rem 0.5rem;
   display: none;
-  border: 2px solid;
-  border-color: var(--shadow) var(--white) var(--white) var(--shadow);
-  box-shadow: inset 1px 1px 0 var(--dk-shadow);
-  background: #fff;
 }
 .sw-laps.has-laps { display: block; }
 
@@ -555,13 +549,13 @@
 .sw-lap-row {
   display: grid;
   grid-template-columns: 1.875rem 1fr 1fr;
-  padding: 0.1875rem 0.125rem;
+  padding: 0.25rem 1.25rem;
 }
 
 .sw-lap-header {
-  padding: 0.125rem 0.125rem 0.25rem;
   font-weight: bold;
   color: #000;
+  border-top: 1px solid var(--silver);
   border-bottom: 1px solid var(--silver);
   font-size: var(--ui-font-xs);
 }
@@ -569,6 +563,7 @@
 
 .sw-lap-row {
   color: var(--text-muted);
+  border-bottom: 1px solid #eee;
   animation: sw-lap-enter 0.3s ease-out;
 }
 .sw-lap-row span:nth-child(2) { text-align: center; }

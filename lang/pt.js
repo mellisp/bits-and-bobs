@@ -352,6 +352,9 @@ window._mpLangRegister('pt', {
   'weather.code.99': 'Trovoada severa',
   'weather.unknown': 'Desconhecido',
   'weather.today': 'Hoje',
+  'weather.error': 'N\u00e3o foi poss\u00edvel obter dados meteorol\u00f3gicos. Tente novamente mais tarde.',
+  'weather.high': 'M\u00e1x:',
+  'weather.low': 'M\u00edn:',
 
   /* NEO Tracker */
   'neo.loading': 'A carregar dados NEO...',

@@ -53,16 +53,31 @@
         var raw = localStorage.getItem('mpOS-icon-positions');
         if (raw) {
           var pos = JSON.parse(raw);
-          var css = '';
+          // Skip stale positions from old layout algorithm
+          if (!pos._v || pos._v < 2) pos = null;
+          if (!pos) return;
+          // Self-heal: skip if any two icons share the same position
+          var seen = {};
+          var valid = true;
           for (var k in pos) {
-            if (pos.hasOwnProperty(k) && pos[k]) {
-              css += '.desktop-icon[data-icon="' + k + '"]{left:' + pos[k].left + 'px;top:' + pos[k].top + 'px}';
+            if (pos.hasOwnProperty(k) && pos[k] && typeof pos[k] === 'object') {
+              var sig = pos[k].left + ',' + pos[k].top;
+              if (seen[sig]) { valid = false; break; }
+              seen[sig] = true;
             }
           }
-          if (css) {
-            var s = document.createElement('style');
-            s.textContent = css;
-            document.head.appendChild(s);
+          if (valid) {
+            var css = '';
+            for (var k2 in pos) {
+              if (pos.hasOwnProperty(k2) && pos[k2] && typeof pos[k2] === 'object') {
+                css += '.desktop-icon[data-icon="' + k2 + '"]{left:' + pos[k2].left + 'px;top:' + pos[k2].top + 'px}';
+              }
+            }
+            if (css) {
+              var s = document.createElement('style');
+              s.textContent = css;
+              document.head.appendChild(s);
+            }
           }
         }
       } catch (e) {}

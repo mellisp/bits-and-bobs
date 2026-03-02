@@ -376,7 +376,7 @@
     if (daily.time.length > 0) {
       const hiloEl = document.createElement('div');
       hiloEl.className = 'weather-hilo';
-      hiloEl.textContent = `H: ${mpFormatTempShort(daily.temperature_2m_max[0])}  L: ${mpFormatTempShort(daily.temperature_2m_min[0])}`;
+      hiloEl.textContent = `${t('weather.high')} ${mpFormatTempShort(daily.temperature_2m_max[0])}  ${t('weather.low')} ${mpFormatTempShort(daily.temperature_2m_min[0])}`;
       info.appendChild(hiloEl);
     }
     curDiv.appendChild(info);
@@ -387,7 +387,8 @@
     forecast.className = 'weather-forecast';
     for (let i = 1; i < daily.time.length; i++) {
       const date = new Date(daily.time[i] + 'T00:00:00');
-      const dayName = date.toLocaleDateString(undefined, { weekday: 'short' });
+      const dayKey = `cal.days.${(date.getDay() + 6) % 7}`;
+      const dayName = t(dayKey);
 
       const dayDiv = document.createElement('div');
       dayDiv.className = 'weather-day';
@@ -433,11 +434,15 @@
           const r = await mpFetch(`https://api.open-meteo.com/v1/forecast?latitude=${flatLat}&longitude=${flatLon}&daily=temperature_2m_max,temperature_2m_min,weathercode&current_weather=true&timezone=auto&forecast_days=4`, { timeout: 10000, dedup: true });
           if (!r.ok) throw new Error('API error');
           const data = await r.json();
+          if (!data.current_weather || !data.daily?.time) throw new Error('Bad data');
           weatherLoaded = true;
           renderWeather(body, data);
-          status.textContent = t('weather.poweredBy');
+          const now = new Date();
+          const hh = String(now.getHours()).padStart(2, '0');
+          const mm = String(now.getMinutes()).padStart(2, '0');
+          status.textContent = `${hh}:${mm} \u00b7 ${t('weather.poweredBy')}`;
         } catch {
-          showErrorPanel(body, 'Failed to fetch weather data. Please try again later.', 'al-tri-we');
+          showErrorPanel(body, t('weather.error'), 'al-tri-we');
         }
       },
       (msg) => {
@@ -451,8 +456,14 @@
     fetchWeather();
   };
 
+  const closeWeather = () => {
+    weatherLoaded = false;
+    window.mpTaskbar.closeWindow('weather');
+  };
+
   // Exports
   window.openWeather = openWeather;
   window.mpRegisterActions({ openWeather });
   window.mpRegisterWindows({ weather: 'Weather' });
+  if (window.CLOSE_MAP) window.CLOSE_MAP.weather = closeWeather;
 })();

@@ -361,6 +361,9 @@
     'weather.code.99': 'Severe thunderstorm',
     'weather.unknown': 'Unknown',
     'weather.today': 'Today',
+    'weather.error': 'Failed to fetch weather data. Please try again later.',
+    'weather.high': 'H:',
+    'weather.low': 'L:',
 
     /* NEO Tracker */
     'neo.loading': 'Loading NEO data...',

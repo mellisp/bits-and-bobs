@@ -909,24 +909,26 @@
     return cachedGrid;
   };
 
+  const ICON_GAP = 12; // fixed px gap between icons — equal perceived spacing
+
   const getDefaultIconPositions = () => {
     const area = desktopArea;
     if (!area) return {};
     const grid = getGridDimensions();
     const areaH = area.clientHeight - GRID_PADDING_TOP;
-    const maxRows = Math.max(1, Math.floor(areaH / grid.rowH));
     const icons = area.querySelectorAll('.desktop-icon[data-icon]');
     const positions = {};
     let col = 0;
-    let row = 0;
+    let currentTop = GRID_PADDING_TOP;
     for (let i = 0; i < icons.length; i++) {
       const key = icons[i].getAttribute('data-icon');
       positions[key] = {
         left: GRID_PADDING_LEFT + col * grid.colW,
-        top: GRID_PADDING_TOP + row * grid.rowH
+        top: currentTop
       };
-      row++;
-      if (row >= maxRows) { row = 0; col++; }
+      const h = icons[i].offsetHeight || grid.rowH;
+      currentTop += h + ICON_GAP;
+      if (currentTop + h > areaH + GRID_PADDING_TOP) { currentTop = GRID_PADDING_TOP; col++; }
     }
     return positions;
   };
@@ -941,6 +943,20 @@
     };
   };
 
+  const hasIconCollisions = (positions) => {
+    const seen = new Set();
+    for (const k in positions) {
+      const p = positions[k];
+      if (!p || typeof p !== 'object') continue;
+      const sig = `${p.left},${p.top}`;
+      if (seen.has(sig)) return true;
+      seen.add(sig);
+    }
+    return false;
+  };
+
+  const ICON_LAYOUT_VERSION = 2; // bump to invalidate stale saved positions
+
   const saveIconPositions = () => {
     const icons = document.querySelectorAll('.desktop-icon[data-icon]');
     const positions = {};
@@ -951,10 +967,17 @@
         top: parseInt(icon.style.top, 10) || 0
       };
     });
+    // Self-heal: refuse to persist colliding positions
+    if (hasIconCollisions(positions)) return;
+    positions._v = ICON_LAYOUT_VERSION;
     mpStorage.setJSON(STORAGE_KEYS.iconPositions, positions);
   };
 
-  const loadIconPositions = () => mpStorage.getJSON(STORAGE_KEYS.iconPositions, null);
+  const loadIconPositions = () => {
+    const data = mpStorage.getJSON(STORAGE_KEYS.iconPositions, null);
+    if (!data || data._v !== ICON_LAYOUT_VERSION) return null;
+    return data;
+  };
 
   const applyIconPositions = (positions) => {
     const icons = document.querySelectorAll('.desktop-icon[data-icon]');
@@ -982,6 +1005,11 @@
       }
     } else {
       positions = defaults;
+    }
+    // Self-heal: if any icons share the same position, reset to defaults
+    if (hasIconCollisions(positions)) {
+      positions = defaults;
+      mpStorage.setJSON(STORAGE_KEYS.iconPositions, positions);
     }
     applyIconPositions(positions);
     requestAnimationFrame(() => {

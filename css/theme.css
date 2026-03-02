@@ -30,7 +30,7 @@
   --ui-icon-lg:    3rem;       /* 48px */
   --ui-desktop-icon-w: 5rem;   /* 80px */
   --grid-col-w: 5.25rem;      /* 84px */
-  --grid-row-h: 5.5rem;       /* 88px */
+  --grid-row-h: 5.5rem;       /* 88px — snap grid only; default positions are content-aware */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -282,10 +282,10 @@ body {
   z-index: 1;
   left: 1.25rem;
 }
-/* CSS fallback positions — JS overrides these once initDesktopIcons runs */
+/* CSS fallback positions — approximate; JS calculates content-aware positions on load */
 .desktop-icon[data-icon="mycomputer"] { top: 1rem; }
-.desktop-icon[data-icon="files"]      { top: 6.5rem; }
-.desktop-icon[data-icon="wikibrowser"]{ top: 12rem; }
+.desktop-icon[data-icon="files"]      { top: 6.75rem; }
+.desktop-icon[data-icon="wikibrowser"]{ top: 11.5rem; }
 
 .desktop-icon.icon-ready {
   transition: left 0.15s ease, top 0.15s ease;
@@ -855,9 +855,9 @@ button.start-menu-item {
     --ui-icon-lg:    3.5rem;     /* 56px */
     --ui-desktop-icon-w: 5.625rem; /* 90px */
     --grid-col-w: 5.875rem;     /* 94px */
-    --grid-row-h: 6rem;         /* 96px */
+    --grid-row-h: 6rem;         /* 96px — snap grid only */
   }
-  .desktop-icon[data-icon="files"]      { top: 7rem; }
+  .desktop-icon[data-icon="files"]      { top: 7.5rem; }
   .desktop-icon[data-icon="wikibrowser"]{ top: 13rem; }
 }
 

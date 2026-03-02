@@ -46,12 +46,14 @@
       const btn = document.getElementById('swStartBtn');
       btn.textContent = t('ui.start');
       btn.classList.remove('sw-running');
+      document.getElementById('swDisplay').classList.remove('sw-active');
     } else {
       swStart = performance.now();
       swRunning = true;
       const btn = document.getElementById('swStartBtn');
       btn.textContent = t('ui.stop');
       btn.classList.add('sw-running');
+      document.getElementById('swDisplay').classList.add('sw-active');
       swTick();
     }
   };
@@ -65,6 +67,7 @@
     const btn = document.getElementById('swStartBtn');
     btn.textContent = t('ui.start');
     btn.classList.remove('sw-running');
+    document.getElementById('swDisplay').classList.remove('sw-active');
     const lapsEl = document.getElementById('swLaps');
     lapsEl.textContent = '';
     lapsEl.classList.remove('has-laps');
