@@ -1160,11 +1160,22 @@ const tmRefreshOnLangChange = () => {
   }
 };
 
+const vmRefreshOnLangChange = () => {
+  const el = document.getElementById('visitormap');
+  if (!el || el.style.display === 'none') return;
+  const hdr = el.querySelector('.vm-list-header');
+  if (hdr) hdr.textContent = t('vm.countries');
+  const status = document.getElementById('visitorMapStatus');
+  const rows = el.querySelectorAll('.vm-list-row');
+  if (status && rows.length) status.textContent = t('vm.countryCount.other', { count: rows.length });
+};
+
 /* ── Exports to window (for inline onclick handlers) ── */
 window.openNeoTracker = openNeoTracker;
 window.openVisitorMap = openVisitorMap;
 window.openTaskManager = openTaskManager;
 window.closeTaskManager = closeTaskManager;
 window.tmRefreshOnLangChange = tmRefreshOnLangChange;
+window.vmRefreshOnLangChange = vmRefreshOnLangChange;
 
 })();

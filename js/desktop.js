@@ -853,6 +853,9 @@
     if (window.synthRefreshOnLangChange) window.synthRefreshOnLangChange();
     if (window.chatRefreshOnLangChange) window.chatRefreshOnLangChange();
     if (window.photoBoothRefreshOnLangChange) window.photoBoothRefreshOnLangChange();
+    if (window.swRefreshOnLangChange) window.swRefreshOnLangChange();
+    if (window.duRefreshOnLangChange) window.duRefreshOnLangChange();
+    if (window.vmRefreshOnLangChange) window.vmRefreshOnLangChange();
     // Mobile launcher: rebuild
     if (mobileQuery.matches) buildMobileLauncher();
     // Update tray lang button

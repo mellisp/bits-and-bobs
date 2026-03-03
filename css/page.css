@@ -496,7 +496,7 @@
   color: #000;
   transition: color 0.3s ease-out;
 }
-.sw-display.sw-active { color: #2c6a99; }
+.sw-display.sw-active { color: var(--accent); }
 .sw-display.sw-active .sw-sep,
 .sw-display.sw-active .sw-cs { color: #3a7cb8; }
 .sw-display .sw-sep { color: var(--text-muted); }
@@ -528,7 +528,7 @@
   box-shadow: inset 1px 1px 0 var(--shadow);
 }
 .sw-btn.sw-running {
-  background: #2c6a99;
+  background: var(--accent);
   color: #fff;
   border-color: var(--dk-shadow) var(--white) var(--white) var(--dk-shadow);
   box-shadow: inset 1px 1px 0 var(--shadow);
@@ -1115,7 +1115,7 @@
   min-height: 1em;
 }
 
-.tz-date-tomorrow { color: #2c6a99; }
+.tz-date-tomorrow { color: var(--accent); }
 .tz-date-yesterday { color: #c86400; }
 
 .tz-indicator {

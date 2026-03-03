@@ -432,10 +432,7 @@
           if (!data.current_weather || !data.daily?.time) throw new Error('Bad data');
           weatherLoaded = true;
           renderWeather(body, data);
-          const now = new Date();
-          const hh = String(now.getHours()).padStart(2, '0');
-          const mm = String(now.getMinutes()).padStart(2, '0');
-          status.textContent = `${hh}:${mm} \u00b7 ${t('weather.poweredBy')}`;
+          status.textContent = t('weather.poweredBy');
         } catch {
           showErrorPanel(body, t('weather.error'), 'al-tri-we');
         }

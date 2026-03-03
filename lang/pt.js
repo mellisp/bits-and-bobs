@@ -771,10 +771,10 @@ window._mpLangRegister('pt', {
   'term.editorSaved': '  Guardado! | ^S Guardar   ^X Sair   Esc Sair',
 
   /* Calendar */
-  'cal.digital': 'Digital',
-  'cal.analog': 'Anal\u00f3gico',
 
   /* Time Zone */
+  'tz.digital': 'Digital',
+  'tz.analog': 'Anal\u00f3gico',
   'tz.yourTime': 'Sua Hora',
   'tz.tomorrow': 'Amanh\u00e3',
   'tz.yesterday': 'Ontem',

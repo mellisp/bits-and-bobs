@@ -89,7 +89,7 @@
   ];
 
   const TZ_DOT_COLORS = {
-    day: '#c89830', night: '#6878a0'
+    day: '#b08020', night: '#6878a0'
   };
 
   let tzGridEl = null;
@@ -340,7 +340,7 @@
     tzAnalog = !tzAnalog;
     tzGridEl.classList.toggle('tz-digital-mode', !tzAnalog);
     const btn = document.querySelector('.tz-toggle');
-    btn.textContent = tzAnalog ? t('cal.digital') : t('cal.analog');
+    btn.textContent = tzAnalog ? t('tz.digital') : t('tz.analog');
     tzTick();
   };
 
@@ -371,7 +371,7 @@
     const tzEl = document.getElementById('timezone');
     if (tzEl && tzEl.style.display !== 'none') {
       const btn = document.querySelector('.tz-toggle');
-      if (btn) btn.textContent = tzAnalog ? t('cal.digital') : t('cal.analog');
+      if (btn) btn.textContent = tzAnalog ? t('tz.digital') : t('tz.analog');
       if (tzStatusEl) tzStatusEl.textContent = t('tz.cities', { count: TZ_CITIES.length });
     }
   };

@@ -6,7 +6,8 @@ const ALLOWED_ORIGIN = 'https://www.matthewpritchard.com';
 const BLOCKED_IPS = new Set(['148.69.200.122']);
 
 function corsHeaders(origin) {
-  if (origin === ALLOWED_ORIGIN || origin === 'https://matthewpritchard.com') {
+  if (origin === ALLOWED_ORIGIN || origin === 'https://matthewpritchard.com'
+      || origin.startsWith('http://localhost:')) {
     return {
       'Access-Control-Allow-Origin': origin,
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',

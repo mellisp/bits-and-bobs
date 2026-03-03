@@ -780,10 +780,10 @@
     'term.editorSaved': '  Saved! | ^S Save   ^X Exit   Esc Exit',
 
     /* Calendar */
-    'cal.digital': 'Digital',
-    'cal.analog': 'Analog',
 
     /* Time Zone */
+    'tz.digital': 'Digital',
+    'tz.analog': 'Analog',
     'tz.yourTime': 'Your Time',
     'tz.tomorrow': 'Tomorrow',
     'tz.yesterday': 'Yesterday',

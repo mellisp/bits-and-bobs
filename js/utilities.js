@@ -427,7 +427,7 @@
    * ════════════════════════════════════════════════════════════════════════ */
 
   const DU_TYPE_LABELS = { js: 'JavaScript', html: 'HTML', css: 'CSS', svg: 'SVG', json: 'JSON' };
-  const DU_TYPE_COLORS = ['#4a8abe', '#5aaa80', '#e8a010', '#c06090', '#8a6abe', '#be6a4a', '#4abe8a'];
+  const DU_TYPE_COLORS = ['#4a8abe', '#3d9068', '#b87808', '#c06090', '#8a6abe', '#be6a4a', '#289a70'];
 
   const darkenHex = (hex, factor) => {
     const r = parseInt(hex.slice(1, 3), 16);
@@ -1918,6 +1918,23 @@
     window.CLOSE_MAP.slotmachine = closeSlotMachine;
   }
 
+  /* ── Language change refresh ── */
+  const swRefreshOnLangChange = () => {
+    const el = document.getElementById('stopwatch');
+    if (!el || el.style.display === 'none') return;
+    const btn = document.getElementById('swStartBtn');
+    if (btn) btn.textContent = swRunning ? t('ui.stop') : t('ui.start');
+    const hdr = document.querySelector('.sw-lap-header');
+    if (hdr) hdr.innerHTML = `<span>${t('sw.lap')}</span><span>${t('sw.split')}</span><span>${t('sw.time')}</span>`;
+    document.getElementById('swStatus').textContent = t('sw.laps', { count: swLaps.length });
+  };
+
+  const duRefreshOnLangChange = () => {
+    const el = document.getElementById('diskusage');
+    if (!el || el.style.display === 'none') return;
+    populateDiskUsage();
+  };
+
   // Export to window
   window.openStopwatch = openStopwatch;
   window.openStickyNotes = openStickyNotes;
@@ -1925,4 +1942,6 @@
   window.openCryptography = openCryptography;
   window.openSlotMachine = openSlotMachine;
   window.openDiskUsage = openDiskUsage;
+  window.swRefreshOnLangChange = swRefreshOnLangChange;
+  window.duRefreshOnLangChange = duRefreshOnLangChange;
 })();
