@@ -23,7 +23,8 @@
 .paint-dialog input[type="text"],
 .paint-file-list,
 .help-index-input,
-.help-search-input {
+.help-search-input,
+.vm-map-wrap {
   border: 2px solid;
   border-color: var(--shadow) var(--white) var(--white) var(--shadow);
   box-shadow: inset 1px 1px 0 var(--dk-shadow);
@@ -2154,6 +2155,8 @@
 .vm-map-wrap {
   flex: 1;
   min-width: 0;
+  background: var(--white);
+  margin: 0.375rem;
   position: relative;
   overflow: hidden;
 }
@@ -2203,10 +2206,11 @@
 
 .vm-list-header {
   font-weight: bold;
-  padding: 0.375rem 0.625rem;
-  border-bottom: 1px solid var(--silver);
+  padding: 0.25rem 0.5rem;
+  background: var(--silver);
+  border-bottom: 1px solid var(--shadow);
   font-size: var(--ui-font-xs);
-  color: #000;
+  color: var(--dk-shadow);
 }
 
 .vm-list-row {
