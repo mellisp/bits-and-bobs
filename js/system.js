@@ -573,7 +573,8 @@
     const cur = getLang();
     const langs = [
       { code: 'en', label: t('mc.regional.english') },
-      { code: 'pt', label: t('mc.regional.portuguese') }
+      { code: 'pt', label: t('mc.regional.portuguese') },
+      { code: 'uk', label: t('mc.regional.ukrainian') }
     ];
     langs.forEach(l => {
       const opt = document.createElement('label');

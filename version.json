@@ -1,11 +1,11 @@
 {
-  "version": "3.3.2",
+  "version": "3.3.3",
   "diskUsage": {
-    "fileCount": 53,
+    "fileCount": 55,
     "types": {
-      "css": { "size": 113826, "count": 2 },
-      "html": { "size": 288872, "count": 9 },
-      "js": { "size": 1127356, "count": 40 },
+      "css": { "size": 114288, "count": 2 },
+      "html": { "size": 344770, "count": 10 },
+      "js": { "size": 1166928, "count": 41 },
       "json": { "size": 45, "count": 1 },
       "svg": { "size": 644, "count": 1 }
     }

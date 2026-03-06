@@ -244,6 +244,7 @@
     'mc.regional.language': 'Language',
     'mc.regional.english': 'English',
     'mc.regional.portuguese': 'Portugu\u00eas (Portugal)',
+    'mc.regional.ukrainian': '\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430 (Ukraine)',
     'mc.regional.clock': 'Clock',
     'mc.regional.12hr': '12-hour (AM/PM)',
     'mc.regional.24hr': '24-hour',
@@ -831,7 +832,7 @@
   /* Restore saved language (mpStorage not yet loaded — i18n.js runs first) */
   try {
     const saved = localStorage.getItem('mp-lang');
-    if (saved === 'pt') current = 'pt';
+    if (saved === 'pt' || saved === 'uk') current = saved;
   } catch (e) { /* private browsing */ }
 
   /* Lookup with {var} interpolation */
@@ -845,13 +846,21 @@
     return str;
   };
 
-  /* Plural helper: Portuguese 0/1 = singular, English only 1 = singular */
+  /* Plural suffix: Ukrainian has 3 forms (one/few/other), Portuguese 0|1=one */
+  const pluralSuffix = (lang, n) => {
+    if (lang === 'uk') {
+      const m10 = n % 10, m100 = n % 100;
+      if (m10 === 1 && m100 !== 11) return '.one';
+      if (m10 >= 2 && m10 <= 4 && !(m100 >= 12 && m100 <= 14)) return '.few';
+      return '.other';
+    }
+    if (lang === 'pt') return (n === 0 || n === 1) ? '.one' : '.other';
+    return n === 1 ? '.one' : '.other';
+  };
+
   const tPlural = (key, count, vars) => {
-    const suffix = (current === 'pt')
-      ? (count === 0 || count === 1 ? '.one' : '.other')
-      : (count === 1 ? '.one' : '.other');
-    const merged = { ...vars, count };
-    return t(key + suffix, merged);
+    const suffix = pluralSuffix(current, count);
+    return t(key + suffix, { ...vars, count });
   };
 
   const setLanguage = (lang) => {

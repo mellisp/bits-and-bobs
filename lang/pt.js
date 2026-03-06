@@ -235,6 +235,7 @@ window._mpLangRegister('pt', {
   'mc.regional.language': 'Idioma',
   'mc.regional.english': 'English',
   'mc.regional.portuguese': 'Portugu\u00eas (Portugal)',
+  'mc.regional.ukrainian': '\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430 (Ucr\u00e2nia)',
   'mc.regional.clock': 'Rel\u00f3gio',
   'mc.regional.12hr': '12 horas (AM/PM)',
   'mc.regional.24hr': '24 horas',

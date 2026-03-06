@@ -252,7 +252,8 @@
     langBtn.textContent = getLang().toUpperCase();
     langBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      setLanguage(getLang() === 'en' ? 'pt' : 'en');
+      const _langs = ['en', 'pt', 'uk'];
+      setLanguage(_langs[(_langs.indexOf(getLang()) + 1) % _langs.length]);
     });
   }
 
@@ -579,11 +580,12 @@
       }
 
       // Check for language switch
-      const langPrefixes = ['switch language', 'change language', 'mudar idioma', 'trocar idioma'];
+      const langPrefixes = ['switch language', 'change language', 'mudar idioma', 'trocar idioma', '\u0437\u043c\u0456\u043d\u0438\u0442\u0438 \u043c\u043e\u0432\u0443', '\u043f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0438\u0442\u0438 \u043c\u043e\u0432\u0443'];
       for (let lp = 0; lp < langPrefixes.length; lp++) {
         if (text === langPrefixes[lp] || text.indexOf(langPrefixes[lp]) === 0) {
           setVoiceState('executing', t('voice.langSwitched'));
-          setLanguage(getLang() === 'pt' ? 'en' : 'pt');
+          const _vLangs = ['en', 'pt', 'uk'];
+          setLanguage(_vLangs[(_vLangs.indexOf(getLang()) + 1) % _vLangs.length]);
           setVoiceState('executing', t('voice.langSwitched'));
           if (vcTranscript) vcTranscript.innerHTML = `<span class="vc-result vc-action">\u2192 ${t('voice.langSwitched')}</span>`;
           voiceBeep(523.25, 0.1);

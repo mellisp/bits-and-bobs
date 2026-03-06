@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.matthewpritchard.com/">
   <link rel="canonical" href="https://www.matthewpritchard.com/">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-V4KZlQSNiLywAAWRtA1MXa9Nuc5Ni5JXOoF++ZZOjFY=' https://www.youtube.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://upload.wikimedia.org https://wsrv.nl data:; frame-src 'self' https://*.wikipedia.org https://*.wikimedia.org https://www.youtube.com https://archive.org https://*.archive.org; connect-src 'self' https://en.wikipedia.org https://en.m.wikipedia.org https://api.open-meteo.com https://ipapi.co https://visitor-map.matthewpritchard.workers.dev https://mpos-chat.matthewpritchard.workers.dev https://api.nasa.gov https://archive.org https://*.archive.org; font-src 'self'; media-src 'self'; base-uri 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-hyOVdEU/D8bAgqtc4gzl/InDFaHiV0K7UNyBMNBhAfE=' https://www.youtube.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://upload.wikimedia.org https://wsrv.nl data:; frame-src 'self' https://*.wikipedia.org https://*.wikimedia.org https://www.youtube.com https://archive.org https://*.archive.org; connect-src 'self' https://en.wikipedia.org https://en.m.wikipedia.org https://api.open-meteo.com https://ipapi.co https://visitor-map.matthewpritchard.workers.dev https://mpos-chat.matthewpritchard.workers.dev https://api.nasa.gov https://archive.org https://*.archive.org; font-src 'self'; media-src 'self'; base-uri 'self'">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="css/theme.css" as="style">
   <link rel="preload" href="css/page.css" as="style">
@@ -45,7 +45,7 @@
       } catch (e) {}
     })();
     // Restore saved language before first paint
-    try { var l = localStorage.getItem('mp-lang'); if (l === 'pt') document.documentElement.lang = 'pt'; } catch(e) {}
+    try { var l = localStorage.getItem('mp-lang'); if (l === 'pt' || l === 'uk') document.documentElement.lang = l; } catch(e) {}
     // Pre-position desktop icons from saved positions to prevent FOUC
     (function () {
       try {
@@ -1328,6 +1328,7 @@
 
   <script src="js/i18n.js" defer></script>
   <script src="lang/pt.js" defer></script>
+  <script src="lang/uk.js" defer></script>
   <script src="js/storage.js" defer></script>
   <script src="js/audio.js" defer></script>
   <script src="js/taskbar.js" defer></script>
