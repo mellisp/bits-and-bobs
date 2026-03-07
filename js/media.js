@@ -457,6 +457,7 @@
   let nmScopeCanvas = null;
   let nmScopeCtx = null;
   let nmTimeDomain = null;
+  let nmResizeObserver = null;
   const nmInputJackId = 'nm-ext-in';
 
   const NM_CHANNEL_DEFS = [
@@ -941,12 +942,13 @@
     body.appendChild(mixer);
 
     // Auto-size canvas
-    const ro = new ResizeObserver(() => {
+    if (nmResizeObserver) { nmResizeObserver.disconnect(); }
+    nmResizeObserver = new ResizeObserver(() => {
       if (nmScopeCanvas && scopeWrap.offsetWidth > 0) {
         nmScopeCanvas.width = scopeWrap.clientWidth - 2;
       }
     });
-    ro.observe(scopeWrap);
+    nmResizeObserver.observe(scopeWrap);
 
     nmBuilt = true;
   };
@@ -970,6 +972,7 @@
   };
 
   const closeNoiseMixer = () => {
+    if (nmResizeObserver) { nmResizeObserver.disconnect(); nmResizeObserver = null; }
     // Unregister input jack
     window.mpAudioBus.unregisterInput(nmInputJackId);
 

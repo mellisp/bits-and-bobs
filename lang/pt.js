@@ -821,6 +821,7 @@ window._mpLangRegister('pt', {
   'desktop.shutdownTitle': 'Encerrar',
 
   /* Feature pack additions */
+  'calc.error': 'Erro',
   'calc.memory': 'Mem\u00f3ria',
   'calc.deg': 'GRAU',
   'calc.rad': 'RAD',

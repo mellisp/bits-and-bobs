@@ -17,6 +17,7 @@
   let rvScopeCanvas = null;
   let rvScopeCtx = null;
   let rvTimeDomain = null;
+  let rvResizeObserver = null;
 
   const inputJackId = 'rv-in';
   const outputJackId = 'rv-out';
@@ -240,12 +241,13 @@
     scopeWrap.appendChild(canvas);
     body.appendChild(scopeWrap);
 
-    const ro = new ResizeObserver(() => {
+    if (rvResizeObserver) { rvResizeObserver.disconnect(); }
+    rvResizeObserver = new ResizeObserver(() => {
       if (rvScopeCanvas && scopeWrap.offsetWidth > 0) {
         rvScopeCanvas.width = scopeWrap.clientWidth - 2;
       }
     });
-    ro.observe(scopeWrap);
+    rvResizeObserver.observe(scopeWrap);
 
     // Mix slider
     const mixRow = document.createElement('div');
@@ -394,6 +396,7 @@
   };
 
   const closeReverb = () => {
+    if (rvResizeObserver) { rvResizeObserver.disconnect(); rvResizeObserver = null; }
     // Stop scope
     if (rvRafId) { cancelAnimationFrame(rvRafId); rvRafId = null; }
 

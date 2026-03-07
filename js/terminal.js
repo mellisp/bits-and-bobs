@@ -896,7 +896,7 @@ const cmdMatrix = () => {
 const stopMatrix = () => {
   if (matrixInterval) { cancelAnimationFrame(matrixInterval); matrixInterval = null; }
   const c = document.querySelector('#run .matrix-canvas');
-  if (c) c.remove();
+  if (c) { c.removeEventListener('click', stopMatrix); c.remove(); }
 };
 
 

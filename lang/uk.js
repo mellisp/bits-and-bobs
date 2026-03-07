@@ -824,6 +824,7 @@ window._mpLangRegister('uk', {
   'desktop.shutdownTitle': '\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0440\u043e\u0431\u043e\u0442\u0438',
 
   /* Feature pack additions */
+  'calc.error': '\u041f\u043e\u043c\u0438\u043b\u043a\u0430',
   'calc.memory': '\u041f\u0430\u043c\u02bc\u044f\u0442\u044c',
   'calc.deg': '\u0413\u0420\u0410\u0414',
   'calc.rad': '\u0420\u0410\u0414',

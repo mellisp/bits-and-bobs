@@ -830,6 +830,7 @@
     'desktop.shutdownTitle': 'Shutdown',
 
     /* Feature pack additions */
+    'calc.error': 'Error',
     'calc.memory': 'Memory',
     'calc.deg': 'DEG',
     'calc.rad': 'RAD',

@@ -55,12 +55,12 @@
       case '+': result = calcPrev + curr; break;
       case '-': result = calcPrev - curr; break;
       case '*': result = calcPrev * curr; break;
-      case '/': result = curr === 0 ? 'Error' : calcPrev / curr; break;
+      case '/': result = curr === 0 ? t('calc.error') : calcPrev / curr; break;
       case 'pow': result = Math.pow(calcPrev, curr); break;
     }
-    if (typeof result === 'number' && !isFinite(result)) result = 'Error';
+    if (typeof result === 'number' && !isFinite(result)) result = t('calc.error');
     calcCurrent = typeof result === 'string' ? result : String(result);
-    if (calcCurrent !== 'Error' && calcCurrent.length > 15) calcCurrent = parseFloat(calcCurrent).toPrecision(10);
+    if (calcCurrent !== t('calc.error') && calcCurrent.length > 15) calcCurrent = parseFloat(calcCurrent).toPrecision(10);
     calcPrev = null;
     calcOperation = null;
     calcReset = true;
@@ -158,7 +158,7 @@
       default: return;
     }
     if (isNaN(result) || !isFinite(result)) {
-      calcCurrent = 'Error';
+      calcCurrent = t('calc.error');
     } else {
       calcCurrent = String(result);
       if (calcCurrent.length > 15) calcCurrent = parseFloat(calcCurrent).toPrecision(10);

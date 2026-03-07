@@ -29,6 +29,10 @@ window.mpRegisterWindows = (map) => Object.assign(WINDOW_NAMES, map);
 window.mpRegisterCommands = (map) => Object.assign(COMMANDS, map);
 window.mpRegisterCloseHandlers = (map) => Object.assign(CLOSE_MAP, map);
 
+/* ── HTML escaping helper ── */
+const escHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+window.escHtml = escHtml;
+
 /* ── Geolocation with IP fallback ── */
 const GEO_ERRORS = {
   1: 'error.geoDenied',

@@ -376,6 +376,7 @@ let spBuilt = false;
 let spCanvas = null;
 let spCanvasCtx = null;
 let spOutputNode = null;
+let spResizeObserver = null;
 const outputJackId = 'sp-out';
 
 const drawWaveform = (pcmData) => {
@@ -510,12 +511,13 @@ const buildUI = () => {
   wrap.appendChild(canvasWrap);
 
   /* ResizeObserver for canvas scaling */
-  const ro = new ResizeObserver(() => {
+  if (spResizeObserver) { spResizeObserver.disconnect(); }
+  spResizeObserver = new ResizeObserver(() => {
     if (spCanvas && canvasWrap.offsetWidth > 0) {
       spCanvas.width = canvasWrap.clientWidth;
     }
   });
-  ro.observe(canvasWrap);
+  spResizeObserver.observe(canvasWrap);
 
   /* Row 4: Output jack */
   const jackRow = document.createElement('div');
@@ -672,6 +674,7 @@ const openSoundProducer = () => {
 };
 
 const closeSoundProducer = () => {
+  if (spResizeObserver) { spResizeObserver.disconnect(); spResizeObserver = null; }
   window.mpTaskbar.closeWindow('soundproducer');
   const bus = window.mpAudioBus;
   if (bus) {
