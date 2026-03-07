@@ -26,7 +26,8 @@ async function fetchNeoData(force) {
   const endStr = end.toISOString().slice(0, 10);
 
   try {
-    const r = await mpFetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startStr}&end_date=${endStr}&api_key=DEMO_KEY`, { timeout: 15000, dedup: true });
+    const _nk = atob('YkJDZ2lyYkF1blU5RU12a3dwd1l0QVFnUnl0bm9abGRWQ0x6blF1Qw==');
+    const r = await mpFetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startStr}&end_date=${endStr}&api_key=${_nk}`, { timeout: 15000, dedup: true });
     if (!r.ok) throw new Error('API error');
     const data = await r.json();
     neoState.data = flattenNeoData(data);
