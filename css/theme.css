@@ -10,6 +10,8 @@
   --highlight-text: #fff;
   --link: #00f;
   --error: #c62828;
+  --vc-listening: #b33a3a;   /* alert error[1] — mic listening/heard */
+  --vc-executing: #3d8a52;   /* alert success[1] — mic executing */
   --accent: #2c6a99;
   --font: "Trebuchet MS", Tahoma, Geneva, sans-serif;
   --text-muted: #57606a;
@@ -671,6 +673,8 @@ button.start-menu-item {
 }
 
 .tray-icon.offline svg rect { fill: #999; }
+.tray-icon.muted svg path { fill: #999; stroke: #999; }
+.tray-icon.muted svg path[fill="none"] { display: none; }
 
 /* ============================================================
    Window Animations
@@ -733,8 +737,8 @@ button.start-menu-item {
 .tray-mic { cursor: pointer; }
 .tray-mic.listening svg rect,
 .tray-mic.listening svg path,
-.tray-mic.listening svg line { stroke: #c62828; fill: none; }
-.tray-mic.listening svg rect[fill] { fill: #c62828; }
+.tray-mic.listening svg line { stroke: var(--vc-listening); fill: none; }
+.tray-mic.listening svg rect[fill] { fill: var(--vc-listening); }
 .tray-mic.listening { animation: mic-pulse 1s ease-in-out infinite; }
 @keyframes mic-pulse {
   0%, 100% { opacity: 1; }
@@ -742,33 +746,33 @@ button.start-menu-item {
 }
 
 /* Voice Commands window mic button */
-.vc-mic-btn.listening svg rect[fill] { fill: #c62828; }
+.vc-mic-btn.listening svg rect[fill] { fill: var(--vc-listening); }
 .vc-mic-btn.listening svg path,
-.vc-mic-btn.listening svg line { stroke: #c62828; }
+.vc-mic-btn.listening svg line { stroke: var(--vc-listening); }
 .vc-mic-btn.listening { animation: mic-pulse 1s ease-in-out infinite; }
 
 /* Voice state: heard (solid red) */
 .tray-mic.heard svg rect,
 .tray-mic.heard svg path,
-.tray-mic.heard svg line { stroke: #c62828; fill: none; }
-.tray-mic.heard svg rect[fill] { fill: #c62828; }
+.tray-mic.heard svg line { stroke: var(--vc-listening); fill: none; }
+.tray-mic.heard svg rect[fill] { fill: var(--vc-listening); }
 .tray-mic.heard { animation: none; opacity: 1; }
 
-.vc-mic-btn.heard svg rect[fill] { fill: #c62828; }
+.vc-mic-btn.heard svg rect[fill] { fill: var(--vc-listening); }
 .vc-mic-btn.heard svg path,
-.vc-mic-btn.heard svg line { stroke: #c62828; }
+.vc-mic-btn.heard svg line { stroke: var(--vc-listening); }
 .vc-mic-btn.heard { animation: none; opacity: 1; }
 
 /* Voice state: executing (green flash) */
 .tray-mic.executing svg rect,
 .tray-mic.executing svg path,
-.tray-mic.executing svg line { stroke: #2e7d32; fill: none; }
-.tray-mic.executing svg rect[fill] { fill: #2e7d32; }
+.tray-mic.executing svg line { stroke: var(--vc-executing); fill: none; }
+.tray-mic.executing svg rect[fill] { fill: var(--vc-executing); }
 .tray-mic.executing { animation: none; opacity: 1; }
 
-.vc-mic-btn.executing svg rect[fill] { fill: #2e7d32; }
+.vc-mic-btn.executing svg rect[fill] { fill: var(--vc-executing); }
 .vc-mic-btn.executing svg path,
-.vc-mic-btn.executing svg line { stroke: #2e7d32; }
+.vc-mic-btn.executing svg line { stroke: var(--vc-executing); }
 .vc-mic-btn.executing { animation: none; opacity: 1; }
 
 /* Floating voice indicator pill */
@@ -802,15 +806,15 @@ button.start-menu-item {
 }
 
 .voice-indicator.state-listening .voice-indicator-dot {
-  background: #c62828;
+  background: var(--vc-listening);
   animation: mic-pulse 1s ease-in-out infinite;
 }
 .voice-indicator.state-heard .voice-indicator-dot {
-  background: #c62828;
+  background: var(--vc-listening);
   animation: none;
 }
 .voice-indicator.state-executing .voice-indicator-dot {
-  background: #2e7d32;
+  background: var(--vc-executing);
   animation: none;
 }
 
@@ -831,8 +835,8 @@ button.start-menu-item {
 }
 
 .vc-result { font-weight: bold; }
-.vc-action { color: #2e7d32; }
-.vc-error { color: #c62828; }
+.vc-action { color: var(--vc-executing); }
+.vc-error { color: var(--vc-listening); }
 
 @media (prefers-reduced-motion: reduce) {
   .tray-mic.listening, .vc-mic-btn.listening,

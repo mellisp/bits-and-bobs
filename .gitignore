@@ -17,8 +17,8 @@ ruvector.db
 
 # Local dev pages
 icon-test.html
-icon-test-weather.html
-icon-test-alerts.html
+icon-library.html
+icon-test-tray.html
 
 # Claude Code project instructions (local-only)
 CLAUDE.md
