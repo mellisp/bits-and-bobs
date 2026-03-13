@@ -844,7 +844,6 @@
   margin-bottom: 0.625rem;
   padding: 0.375rem 0.625rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 3px;
   background: rgba(255, 255, 255, 0.05);
 }
 .sm-intro-rules-title {
@@ -1068,7 +1067,6 @@
 .tz-tile {
   text-align: center;
   padding: 0.5rem 0.25rem;
-  border-radius: 0.25rem;
   transition: transform 0.2s ease;
 }
 
@@ -1082,7 +1080,6 @@
   margin-bottom: 0.375rem;
   border: 1px solid rgba(0,0,0,0.12);
   padding: 0.1875rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
 .tz-clock-face svg {
@@ -1504,7 +1501,6 @@
   color: #fff;
   font-size: 0.6875rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 2px;
   white-space: nowrap;
   pointer-events: none;
   z-index: 10;
@@ -1751,7 +1747,6 @@
   height: 1rem;
   display: flex;
   overflow: hidden;
-  border-radius: 2px;
 }
 
 .du-bar-seg { height: 100%; }
@@ -2298,7 +2293,6 @@
   pointer-events: none;
   white-space: nowrap;
   z-index: 5;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   display: none;
 }
 
@@ -2756,7 +2750,6 @@
 .vc-mic-btn {
   width: 4rem;
   height: 4rem;
-  border-radius: 50%;
   border: 2px solid;
   border-color: var(--white) var(--dk-shadow) var(--dk-shadow) var(--white);
   box-shadow: inset 1px 1px 0 var(--silver), inset -1px -1px 0 var(--shadow);
@@ -2841,7 +2834,6 @@
   padding: 0.5rem 1.75rem 0.625rem 0.625rem;
   font-size: var(--ui-font-xs);
   line-height: 1.4;
-  box-shadow: 2px 2px 6px rgba(0,0,0,.25);
   z-index: 10001;
   animation: balloon-in .25s ease-out;
 }
@@ -3683,7 +3675,6 @@
   border-color: var(--white) var(--dk-shadow) var(--dk-shadow) var(--white);
   padding: 0.125rem 0;
   min-width: 10rem;
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 .context-menu-item {
   padding: 0.25rem 1.25rem;

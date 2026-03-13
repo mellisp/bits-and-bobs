@@ -1,9 +1,9 @@
 {
-  "version": "3.4.1",
+  "version": "3.4.2",
   "diskUsage": {
     "fileCount": 59,
     "types": {
-      "css": { "size": 118052, "count": 2 },
+      "css": { "size": 117767, "count": 2 },
       "html": { "size": 349352, "count": 10 },
       "js": { "size": 1247941, "count": 45 },
       "json": { "size": 145, "count": 1 },
