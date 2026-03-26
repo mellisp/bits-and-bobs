@@ -575,7 +575,7 @@ const loadPresetToUI = (name) => {
     drawWaveform(null);
     renderOffline(name).then(buf => {
       if (buf) drawWaveform(buf.getChannelData(0));
-    });
+    }).catch(() => {});
   }
 };
 

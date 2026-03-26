@@ -746,7 +746,8 @@
       const status = document.getElementById('cryptoStatus');
       if (status) { status.textContent = t('crypto.copied'); setTimeout(() => { cryptoRun(); }, 1500); }
     } catch (e) {
-      // clipboard write failed silently
+      const status = document.getElementById('cryptoStatus');
+      if (status) { status.textContent = t('crypto.copyFailed') || 'Copy failed'; setTimeout(() => { cryptoRun(); }, 1500); }
     }
   };
 
