@@ -635,6 +635,21 @@
       { code: 'dmy', label: t('mc.regional.dmy') },
       { code: 'ymd', label: t('mc.regional.ymd') }
     ];
+
+    const dateSampleEl = document.createElement('div');
+    dateSampleEl.style.cssText = 'font-size:var(--ui-font-xs);color:var(--text-muted);margin-bottom:0.25rem;';
+    const dateSampleFormats = { mdy: 'MM/DD/YYYY', dmy: 'DD/MM/YYYY', ymd: 'YYYY-MM-DD' };
+    const updateDateSample = (code) => {
+      const now = new Date();
+      const dd = String(now.getDate()).padStart(2, '0');
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const yyyy = now.getFullYear();
+      const samples = { mdy: `${mm}/${dd}/${yyyy}`, dmy: `${dd}/${mm}/${yyyy}`, ymd: `${yyyy}-${mm}-${dd}` };
+      dateSampleEl.textContent = `${dateSampleFormats[code]}: ${samples[code]}`;
+    };
+    updateDateSample(curDate);
+    body.appendChild(dateSampleEl);
+
     dateFmts.forEach(d => {
       const opt = document.createElement('label');
       opt.className = 'regional-lang-option';
@@ -645,6 +660,7 @@
       if (d.code === curDate) radio.checked = true;
       radio.addEventListener('change', () => {
         mpStorage.set(STORAGE_KEYS.dateFmt, d.code);
+        updateDateSample(d.code);
         window.mpRefreshFormatCache?.();
       });
       opt.appendChild(radio);

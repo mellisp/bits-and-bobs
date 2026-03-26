@@ -463,6 +463,7 @@
     const toolbar = document.querySelector('#notepad .notepad-toolbar');
     toolbar.insertAdjacentElement('afterend', bar);
     findInput.focus();
+    findInput.select();
 
     if (notepadFindTerm) {
       notepadBuildFindMatches();

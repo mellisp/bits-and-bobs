@@ -273,7 +273,11 @@
     if (!win) return;
     win.style.display = '';
     bringToFront(win);
-    onAnimEnd(win, 'restoring', () => {});
+    onAnimEnd(win, 'restoring', () => {
+      const focusable = win.querySelector('textarea, input:not([type="hidden"]), [tabindex]');
+      if (focusable) focusable.focus();
+      else { win.setAttribute('tabindex', '-1'); win.focus(); }
+    });
     if (taskbarItems) {
       taskbarItems.querySelector(`[data-window-id="${id}"]`)?.remove();
     }
@@ -529,7 +533,11 @@
       if (tbCtxMenu && !tbCtxMenu.contains(e.target)) dismissTbCtxMenu();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && tbCtxMenu) dismissTbCtxMenu();
+      if (e.key === 'Escape') {
+        if (tbCtxMenu) dismissTbCtxMenu();
+        if (volumePopup) volumePopup.classList.remove('open');
+        if (netPopup) netPopup.classList.remove('open');
+      }
     });
   }
 

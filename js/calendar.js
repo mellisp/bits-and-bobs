@@ -97,7 +97,7 @@
   };
 
   let tzGridEl = null;
-  let tzAnalog = true;
+  let tzAnalog = mpStorage.get(STORAGE_KEYS.tzViewMode, 'analog') === 'analog';
   let tzTimer = null;
   let tzBuilt = false;
   const tzRefs = { h: [], m: [], s: [], d: [], o: [], date: [], ind: [], tlDot: [] };
@@ -118,7 +118,14 @@
       tzTimelineEl = document.getElementById('tzTimeline');
       tzStatusEl = document.getElementById('tzStatus');
     }
-    if (!tzBuilt) { tzBuildGrid(); tzBuildTimeline(); tzBuilt = true; }
+    if (!tzBuilt) {
+      tzBuildGrid();
+      tzBuildTimeline();
+      tzBuilt = true;
+      if (!tzAnalog) tzGridEl.classList.add('tz-digital-mode');
+      const btn = document.querySelector('.tz-toggle');
+      if (btn) btn.textContent = tzAnalog ? t('tz.digital') : t('tz.analog');
+    }
     if (!tzTimer) tzTimer = setInterval(tzTick, 1000);
     tzTick();
   };
@@ -345,6 +352,7 @@
     tzGridEl.classList.toggle('tz-digital-mode', !tzAnalog);
     const btn = document.querySelector('.tz-toggle');
     btn.textContent = tzAnalog ? t('tz.digital') : t('tz.analog');
+    mpStorage.set(STORAGE_KEYS.tzViewMode, tzAnalog ? 'analog' : 'digital');
     tzTick();
   };
 

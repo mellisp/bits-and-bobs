@@ -17,7 +17,8 @@ var KEYS = {
   paintFiles:      'mpOS-paint-files',
   stickyNotes:     'mpOS-sticky-notes',
   terminal:        'mpOS-terminal',
-  slotMachine:     'mpOS-slotmachine'
+  slotMachine:     'mpOS-slotmachine',
+  tzViewMode:      'mp-tz-view'
 };
 
 function get(key, fallback) {

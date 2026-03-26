@@ -432,7 +432,8 @@
           if (!data.current_weather || !data.daily?.time) throw new Error('Bad data');
           weatherLoaded = true;
           renderWeather(body, data);
-          status.textContent = t('weather.poweredBy');
+          const timeStr = new Date().toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+          status.textContent = t('weather.poweredBy') + ' \u2022 ' + timeStr;
         } catch {
           showErrorPanel(body, t('weather.error'), 'al-tri-we');
         }

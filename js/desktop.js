@@ -1467,7 +1467,10 @@
       const action = icon.dataset.action;
       if (action) {
         icon.addEventListener('dblclick', () => { window[action]?.(); });
-        icon.addEventListener('keydown', (e) => { if (e.key === 'Enter') window[action]?.(); });
+        icon.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window[action]?.(); }
+          if (e.key === 'Escape') { icon.blur(); }
+        });
       }
     });
 

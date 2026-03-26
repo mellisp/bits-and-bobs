@@ -509,6 +509,7 @@ document.addEventListener('mouseover', (e) => {
   if (!el) return;
   tipTarget = el;
   clearTimeout(tipTimer);
+  const tipDelay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400;
   tipTimer = setTimeout(() => {
     const text = el.getAttribute('data-tip');
     if (!text) return;
@@ -520,7 +521,7 @@ document.addEventListener('mouseover', (e) => {
     const y = e.clientY + 20;
     tipEl.style.left = x + 'px';
     tipEl.style.top = (y + tipH > window.innerHeight ? e.clientY - tipH - 4 : y) + 'px';
-  }, 400);
+  }, tipDelay);
 }, true);
 
 document.addEventListener('mousemove', (e) => {
