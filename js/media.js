@@ -165,7 +165,7 @@
         const orig = freqDisp.textContent;
         freqDisp.textContent = t('tf.copied') || 'Copied!';
         setTimeout(() => { freqDisp.textContent = orig; }, 1000);
-      });
+      }).catch(() => {});
     });
     inst.elements.freqDisplay = freqDisp;
     body.appendChild(freqDisp);
