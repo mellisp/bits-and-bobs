@@ -652,6 +652,7 @@ const startCapture = () => {
       return;
     }
     cdEl.textContent = count;
+    if (window.mpSoundProducer) window.mpSoundProducer.play('click');
     count--;
     setTimeout(tick, 800);
   };

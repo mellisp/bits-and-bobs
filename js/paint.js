@@ -168,6 +168,7 @@ const paintSaveState = () => {
 const paintUpdateUndoButtons = () => {
   paintUndoBtn.disabled = paintUndoStack.length <= 1;
   paintRedoBtn.disabled = paintRedoStack.length === 0;
+  if (paintStatusEl) paintUpdateStatus();
 };
 
 const paintRestoreState = (imageData) => {
@@ -504,7 +505,10 @@ const paintSizeChange = (val) => {
 const paintUpdateStatus = () => {
   const name = t(`paint.tool.${paintTool}`);
   const size = paintTool === 'pencil' ? '1' : (paintTool === 'fill' ? '' : paintSize);
-  paintStatusEl.textContent = name + (size ? `: ${size}px` : '');
+  const undoCount = Math.max(0, paintUndoStack.length - 1);
+  const redoCount = paintRedoStack.length;
+  const history = undoCount || redoCount ? ` | ${t('ui.undo')}: ${undoCount} ${t('ui.redo')}: ${redoCount}` : '';
+  paintStatusEl.textContent = name + (size ? `: ${size}px` : '') + history;
 };
 
 const paintSetTitle = () => {

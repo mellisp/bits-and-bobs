@@ -153,10 +153,20 @@
     noteRow.appendChild(octSel);
     body.appendChild(noteRow);
 
-    // Frequency display
+    // Frequency display (click to copy)
     const freqDisp = document.createElement('div');
     freqDisp.className = 'tf-freq-display';
     freqDisp.textContent = '440.00 Hz';
+    freqDisp.style.cursor = 'pointer';
+    freqDisp.setAttribute('data-tip', t('tf.clickToCopy') || 'Click to copy');
+    freqDisp.addEventListener('click', () => {
+      const text = freqDisp.textContent;
+      navigator.clipboard?.writeText(text).then(() => {
+        const orig = freqDisp.textContent;
+        freqDisp.textContent = t('tf.copied') || 'Copied!';
+        setTimeout(() => { freqDisp.textContent = orig; }, 1000);
+      });
+    });
     inst.elements.freqDisplay = freqDisp;
     body.appendChild(freqDisp);
 

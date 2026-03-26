@@ -25,7 +25,7 @@
 
   const calcDigit = (d) => {
     if (calcReset) { calcCurrent = '0'; calcReset = false; }
-    if (calcCurrent === '0') calcCurrent = d;
+    if (calcCurrent === '0' && d !== '.') calcCurrent = d;
     else calcCurrent += d;
     if (calcCurrent.length > 15) calcCurrent = calcCurrent.slice(0, 15);
     calcUpdateDisplay();
@@ -86,7 +86,10 @@
   /* ── Memory ── */
   const calcMemIndicator = document.getElementById('calcMemIndicator');
   const calcUpdateMemIndicator = () => {
-    if (calcMemIndicator) calcMemIndicator.style.visibility = calcMemory !== 0 ? 'visible' : 'hidden';
+    if (calcMemIndicator) {
+      calcMemIndicator.style.visibility = calcMemory !== 0 ? 'visible' : 'hidden';
+      calcMemIndicator.setAttribute('data-tip', calcMemory !== 0 ? `M = ${calcMemory}` : '');
+    }
   };
 
   const calcMem = (action) => {
