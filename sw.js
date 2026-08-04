@@ -11,6 +11,7 @@ var SHELL_FILES = [
   'css/page.css',
   'js/i18n.js',
   'lang/pt.js',
+  'lang/uk.js',
   'js/audio.js',
   'js/taskbar.js',
   'js/core.js',

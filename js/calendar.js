@@ -126,7 +126,8 @@
       const btn = document.querySelector('.tz-toggle');
       if (btn) btn.textContent = tzAnalog ? t('tz.digital') : t('tz.analog');
     }
-    if (!tzTimer) tzTimer = setInterval(tzTick, 1000);
+    if (tzTimer) { clearInterval(tzTimer); tzTimer = null; }
+    tzTimer = setInterval(tzTick, 1000);
     tzTick();
   };
 

@@ -47,7 +47,7 @@ const closeAquarium = () => {
   const embed = document.getElementById('aquariumEmbed');
   const shield = document.getElementById('aquariumShield');
   if (aquariumPlayer && aquariumPlayer.destroy) {
-    aquariumPlayer.destroy();
+    try { aquariumPlayer.destroy(); } catch (e) { /* YouTube API state error */ }
     aquariumPlayer = null;
   }
   const iframe = embed.querySelector('iframe');
